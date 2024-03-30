@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Web APIs | COMP1073 Client-Side JavaScript</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/normalize.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <h1>Web <abbr title="Application Programming Interface">API</abbr>s</h1>
+    <p>There are many Application Programming Interfaces (<abbr title="Application Programming Interface">API</abbr>s)
+        that are built on top of the core JavaScript language. These tools give you the ability to build some very
+        powerful functionality without adding a lot of extra code.</p>
+    <section>
+        <img src="images/dinosaur.png"
+            alt="A red Tyrannosaurus Rex: A two legged dinosaur standing upright like a human, with small arms, and a large head with lots of sharp teeth.">
+        <p>Here we will add a link to the <a href="https://www.mozilla.org/">Mozilla homepage</a></p>
+    </section>
+    <!-- STEP 1: Analyze this page in the elements inspector pane in your browser developer tools (try a variety of different browsers) - inspect an element node, root node, child node, descendant node, parent node, sibling nodes, and text nodes -->
+    <script>
+        /* STEP 2a: Select an element inside the DOM and store a reference to in inside a variable */
+        var link = document.querySelector('a');
+
+        /* STEP 2b: Update the text node inside the link by changing the Node.textContent property */
+        link.textContent = 'MDN Homepage';
+
+        /* STEP 2c: Change the URL by updating the href attribute node */
+        link.href = 'https://developer.mozilla.org/';
+
+        /* STEP 3: Creating New Nodes and Inserting Them Into the DOM */
+        /* STEP 3a: Grab the SECTION element */
+        var section = document.querySelector('section');
+        /* STEP 3b: Create a new P element, and add a text node */
+        var paragraph = document.createElement('p');
+        paragraph.textContent = 'We hope you find MDN helpful.';
+        /* STEP 3c: Add this new node to the end of the nodes contained by the SECTION element */
+        section.appendChild(paragraph);
+        /* STEP 3e: Create a text node, and insert it into the paragraph that contains the link */
+        var text = document.createTextNode(' – the best source for web development information on the web.');
+        paragraph.appendChild(text);
+
+        /* STEP 4: Moving and Removing DOM Elements */
+        /* STEP 4a: Move linkParagraph to another location in the DOM */
+        section.appendChild(paragraph);
+        /* STEP 4c: Remove the node directly */
+        paragraph.remove();
+
+        /* STEP 5: Manipulating Document Styles */
+        /* STEP 5d: Add the class 'highlight' to the paragraph */
+        paragraph.setAttribute('class', 'highlight');
+
+        /* STEP 6: Assign the BODY to a variable */
+        var body = document.querySelector('body');
+        /* STEP 7: Collect the width and height of the document window */
+        var WIDTH = window.innerWidth;
+        var HEIGHT = window.innerHeight;
+        /* STEP 8: Change the border of the BODY */
+        body.style.border = '5px dotted red';
+        /* STEP 9: Change the height and width of the BODY to equal 75% of the document window */
+        body.style.width = (WIDTH * 0.75) + 'px';
+        body.style.height = (HEIGHT * 0.75) + 'px';
+
+        /* STEP 11: Build a function that responds to the window.onresize event and revises the size of the BODY accordingly */
+        window.addEventListener('resize', function () {
+            var WIDTH = window.innerWidth;
+            var HEIGHT = window.innerHeight;
+            body.style.width = (WIDTH * 0.75) + 'px';
+            body.style.height = (HEIGHT * 0.75) + 'px';
+        });
+    </script>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Getting Data From a Server</a></li>
+            <li><a href="nytimes.html">New York Times API</a></li>
+        </ul>
+    </nav>
+</body>
+
+</html>
